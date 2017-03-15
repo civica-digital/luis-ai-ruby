@@ -4,14 +4,14 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'luis/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "luis"
+  spec.name          = "luis-ai"
   spec.version       = Luis::VERSION
   spec.authors       = ["Rafael Cardenas"]
-  spec.email         = ["rafael@rafaelcr.com"]
+  spec.email         = ["rafael@civica.digital"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = "Provides an interface to interact with Microsoft's Luis AI."
+  # spec.description   = %q{TODO: Write a longer description or delete this line.}
+  spec.homepage      = "https://github.com/civica-digital/luis"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
