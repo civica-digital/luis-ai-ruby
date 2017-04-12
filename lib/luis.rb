@@ -65,6 +65,7 @@ module Luis
     end
 
     entities = []
+    raise "#{self} received no entities" if response["entities"].length == 0
     for entity in response["entities"] do
       entities.push(Entity.new(entity))
     end

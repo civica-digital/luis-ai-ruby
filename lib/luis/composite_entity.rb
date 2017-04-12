@@ -1,6 +1,6 @@
 module Luis
   class CompositeEntity
-    attr_reader :type, :value, :children
+    attr_reader :type, :name, :children
 
     def initialize(payload)
       @type = payload["parentType"].to_sym
