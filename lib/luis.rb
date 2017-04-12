@@ -5,7 +5,7 @@ require "luis/configuration"
 require "luis/version"
 require "luis/entity"
 require "luis/intent"
-require "luis/composite_entities"
+require "luis/composite_entity"
 
 module Luis
 
