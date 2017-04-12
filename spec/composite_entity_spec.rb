@@ -18,8 +18,8 @@ describe Luis::CompositeEntity do
 
   it "contains all fields from remote entity" do
     ce = Luis::CompositeEntity.new(payload)
-    expect(ce.name).to eq(:vehicleright)
-    expect(ce.value).to eq("vehicle")
+    expect(ce.type).to eq(:vehicleright)
+    expect(ce.name).to eq("vehicle")
     expect(ce.children.type).to eq("procedure")
     expect(ce.children.value).to eq("vehicle")
   end
