@@ -58,21 +58,22 @@ module Luis
     query = response["query"]
 
     intents = [ Intent.new(response["topScoringIntent"]) ]
-    if response.has_key?("intents")
+
       for intent in response["intents"][1..-1] do  # The first is always the top scoring intent.
         intents.push(Intent.new(intent))
       end
     end
 
     entities = []
-    raise "#{self} received no entities" if response["entities"].length == 0
     for entity in response["entities"] do
       entities.push(Entity.new(entity))
     end
 
     composite_entities = []
-    for composite_entity in response["compositeEntities"] do
-      composite_entities.push(CompositeEntity.new(composite_entity))
+    if response.has_key?("compositeEntities")
+      for composite_entity in response["compositeEntities"] do
+        composite_entities.push(CompositeEntity.new(composite_entity))
+      end
     end
 
     Result.new(query, intents, entities, composite_entities)
