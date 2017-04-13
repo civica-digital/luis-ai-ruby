@@ -58,7 +58,7 @@ module Luis
     query = response["query"]
 
     intents = [ Intent.new(response["topScoringIntent"]) ]
-
+    if response.has_key?("intents")
       for intent in response["intents"][1..-1] do  # The first is always the top scoring intent.
         intents.push(Intent.new(intent))
       end
