@@ -5,16 +5,18 @@ require "luis/configuration"
 require "luis/version"
 require "luis/entity"
 require "luis/intent"
+require "luis/composite_entity"
 
 module Luis
 
   class Result
-    attr_reader :query, :intents, :entities
+    attr_reader :query, :intents, :entities, :composite_entities
 
-    def initialize(query, intents, entities)
+    def initialize(query, intents, entities, composite_entities)
       @query = query || :no_query_provided
       @intents = intents || []
       @entities = entities || []
+      @composite_entities = composite_entities || []
     end
 
     def top_scoring_intent
@@ -67,7 +69,14 @@ module Luis
       entities.push(Entity.new(entity))
     end
 
-    Result.new(query, intents, entities)
+    composite_entities = []
+    if response.has_key?("compositeEntities")
+      for composite_entity in response["compositeEntities"] do
+        composite_entities.push(CompositeEntity.new(composite_entity))
+      end
+    end
+
+    Result.new(query, intents, entities, composite_entities)
   end
 
 end
