@@ -1,8 +1,6 @@
 # Luis
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/luis`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This gem will allow you to easily interact with Microsoft's Luis AI NLP engine. It is a simple query interface that provides inference responses in the form of compact objects that are easily used through Ruby.
 
 ## Installation
 
@@ -42,9 +40,9 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/luis.
+Bug reports and pull requests are welcome on GitHub at https://github.com/civica-digital/luis-ai-ruby.
 
 
 ## License
 
-The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
+The gem is available as open source under the terms of the [Apache License](https://www.apache.org/licenses/LICENSE-2.0).
