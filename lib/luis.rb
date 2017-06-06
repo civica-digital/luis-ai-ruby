@@ -1,5 +1,6 @@
 require "json"
 require "rest-client"
+require "uri"
 
 require "luis/configuration"
 require "luis/version"
@@ -44,7 +45,8 @@ module Luis
     endpoint = configuration.endpoint_url
     raise "#{self} requires an endpoint url" if endpoint == nil
 
-    url = "#{endpoint}#{utterance}"
+    escaped_utterance = URI.escape(utterance)
+    url = "#{endpoint}#{escaped_utterance}"
     result = RestClient.get(url)
     json = JSON.parse(result)
     parse_response(json)
