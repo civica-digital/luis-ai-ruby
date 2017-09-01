@@ -29,6 +29,7 @@ In order to get the endpoint URL you can go to the _Publish App_ section for you
 ```ruby
 Luis.configure do |config|
   config.endpoint_url = ''
+  config.timeout = 10  # Luis query timeout (seconds, optional).
 end
 ```
 

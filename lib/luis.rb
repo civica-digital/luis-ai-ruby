@@ -47,9 +47,16 @@ module Luis
 
     escaped_utterance = URI.escape(utterance)
     url = "#{endpoint}#{escaped_utterance}"
-    result = RestClient.get(url)
-    json = JSON.parse(result)
-    parse_response(json)
+    begin
+      result = RestClient::Request.execute(method: :get, url: url, timeout: @configuration.timeout)
+      json = JSON.parse(result)
+      return parse_response(json)
+    rescue RestClient::Exceptions::Timeout => e
+      raise Error::Timeout, e
+    rescue => e
+      raise Error::ConnectionError, e
+    end
+    nil
   end
 
   private
@@ -79,6 +86,11 @@ module Luis
     end
 
     Result.new(query, intents, entities, composite_entities)
+  end
+
+  module Error
+    class Timeout < StandardError; end
+    class ConnectionError < StandardError; end
   end
 
 end
