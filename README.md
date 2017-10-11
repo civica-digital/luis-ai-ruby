@@ -7,7 +7,7 @@ This gem will allow you to easily interact with Microsoft's Luis AI NLP engine. 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'luis'
+gem 'luis-ai', :git => 'https://github.com/civica-digital/luis-ai.git'
 ```
 
 And then execute:
@@ -16,7 +16,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install luis
+    $ gem install luis-ai
 
 ## Usage
 
@@ -31,6 +31,50 @@ Luis.configure do |config|
   config.endpoint_url = ''
   config.timeout = 10  # Luis query timeout (seconds, optional).
 end
+```
+
+### Example Response
+
+```
+cache: [GET /luis/v2.0/apps/44b043b7-9b3a-4759-9174-0b2f4a66045f?subscription-key=3b302a809da846bd87f107db2efe47bd&timezoneOffset=0&verbose=true&q=Como%20sacar%20un%20acta%20de%20nacimiento] miss
+=> #<Luis::Result:0x000026e8858900
+ @composite_entities=[],
+ @entities=
+  [#<Luis::Entity:0x000026e88589c8
+    @end_index=3,
+    @name="como",
+    @score=0.9627124,
+    @start_index=0,
+    @type=:question>,
+   #<Luis::Entity:0x000026e88589a0
+    @end_index=9,
+    @name="sacar",
+    @score=0.998077,
+    @start_index=5,
+    @type=:verb>,
+   #<Luis::Entity:0x000026e8858978
+    @end_index=31,
+    @name="acta de nacimiento",
+    @score=0.9600747,
+    @start_index=14,
+    @type=:subject>],
+ @intents=
+  [#<Luis::Intent:0x000026e8858db0 @name="howto", @score=0.8623287>,
+   #<Luis::Intent:0x000026e8858c98 @name="amend", @score=0.0500230826>,
+   #<Luis::Intent:0x000026e8858c70 @name="cost", @score=0.0362653472>,
+   #<Luis::Intent:0x000026e8858c20 @name="greeting", @score=0.0344840921>,
+   #<Luis::Intent:0x000026e8858bf8 @name="schedule", @score=0.027911773>,
+   #<Luis::Intent:0x000026e8858ba8 @name="where", @score=0.027329471>,
+   #<Luis::Intent:0x000026e8858b80 @name="input", @score=0.0270639714>,
+   #<Luis::Intent:0x000026e8858b58 @name="contact", @score=0.016433619>,
+   #<Luis::Intent:0x000026e8858b30 @name="failed-contact", @score=0.00889490452>,
+   #<Luis::Intent:0x000026e8858b08 @name="None", @score=0.007859318>,
+   #<Luis::Intent:0x000026e8858ab8 @name="flow", @score=0.006125225>,
+   #<Luis::Intent:0x000026e8858a90 @name="question", @score=0.0059696096>,
+   #<Luis::Intent:0x000026e8858a68 @name="report", @score=0.003323447>,
+   #<Luis::Intent:0x000026e8858a40 @name="date", @score=0.00193842372>,
+   #<Luis::Intent:0x000026e8858a18 @name="thanks", @score=0.00185025937>],
+ @query="Como sacar un acta de nacimiento">
 ```
 
 ## Development
