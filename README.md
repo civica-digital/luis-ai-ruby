@@ -7,7 +7,7 @@ This gem will allow you to easily interact with Microsoft's Luis AI NLP engine. 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'luis'
+gem 'luis-ai', :git => 'https://github.com/civica-digital/luis-ai.git'
 ```
 
 And then execute:
@@ -16,7 +16,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install luis
+    $ gem install luis-ai
 
 ## Usage
 
