@@ -18,7 +18,7 @@ module Luis
       @intents = intents || []
       @entities = entities || []
       @composite_entities = composite_entities || []
-      @altered_query = altered_query || nil
+      @altered_query = altered_query
     end
 
     def top_scoring_intent
