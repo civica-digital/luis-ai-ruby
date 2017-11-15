@@ -57,6 +57,6 @@ describe Luis do
     expect(response.intents.length).to eq(2)
     expect(response.top_scoring_intent.name).to eq("select service")
     expect(response.entities.length).to eq(3)
-    expect(response.altered_query.text).to eq("Quiero pagar tenencia")
+    expect(response.altered_query).to eq("Quiero pagar tenencia")
   end
 end

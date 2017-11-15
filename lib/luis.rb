@@ -7,7 +7,6 @@ require "luis/version"
 require "luis/entity"
 require "luis/intent"
 require "luis/composite_entity"
-require "luis/altered_query"
 
 module Luis
 
@@ -19,7 +18,7 @@ module Luis
       @intents = intents || []
       @entities = entities || []
       @composite_entities = composite_entities || []
-      @altered_query = altered_query || []
+      @altered_query = altered_query || nil
     end
 
     def top_scoring_intent
@@ -87,9 +86,7 @@ module Luis
       end
     end
 
-    if response.has_key?("alteredQuery")
-      altered_query = AlteredQuery.new(response["alteredQuery"])
-    end
+    altered_query = response["alteredQuery"] if response.has_key?("alteredQuery")
 
     Result.new(query, intents, entities, composite_entities, altered_query)
   end
