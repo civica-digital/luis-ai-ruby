@@ -3,7 +3,8 @@ require "spec_helper"
 describe Luis do
   let(:payload) {
     {
-      "query" => "Quiero pagar tenencia",
+      "query" => "Quiero pagar tenensia",
+      "alteredQuery" => "Quiero pagar tenencia",
       "topScoringIntent" => {
         "intent" => "select service",
         "score" => 0.9999995
@@ -52,9 +53,10 @@ describe Luis do
     response = nil
     expect { response = Luis.parse_response(payload) }.not_to raise_error
     expect(response).not_to be nil
-    expect(response.query).to eq("Quiero pagar tenencia")
+    expect(response.query).to eq("Quiero pagar tenensia")
     expect(response.intents.length).to eq(2)
     expect(response.top_scoring_intent.name).to eq("select service")
     expect(response.entities.length).to eq(3)
+    expect(response.altered_query.text).to eq("Quiero pagar tenencia")
   end
 end
