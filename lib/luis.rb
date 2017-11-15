@@ -11,13 +11,14 @@ require "luis/composite_entity"
 module Luis
 
   class Result
-    attr_reader :query, :intents, :entities, :composite_entities
+    attr_reader :query, :intents, :entities, :composite_entities, :altered_query
 
-    def initialize(query, intents, entities, composite_entities)
+    def initialize(query, intents, entities, composite_entities, altered_query)
       @query = query || :no_query_provided
       @intents = intents || []
       @entities = entities || []
       @composite_entities = composite_entities || []
+      @altered_query = altered_query
     end
 
     def top_scoring_intent
@@ -85,7 +86,9 @@ module Luis
       end
     end
 
-    Result.new(query, intents, entities, composite_entities)
+    altered_query = response["alteredQuery"] if response.has_key?("alteredQuery")
+
+    Result.new(query, intents, entities, composite_entities, altered_query)
   end
 
   module Error
