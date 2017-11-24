@@ -8,6 +8,11 @@ describe Luis do
   end
 
   context "query" do
+
+    it "returns nil when the query is empty" do
+      expect(Luis.query("")).to eq(nil)
+    end
+
     it "raises timeout exception when there is a timeout" do
       allow(RestClient::Request).to receive(:execute).and_raise(RestClient::Exceptions::Timeout)
       expect { Luis.query("hello world") }.to raise_error(Luis::Error::Timeout)
