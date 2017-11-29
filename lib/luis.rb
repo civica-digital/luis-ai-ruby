@@ -43,6 +43,7 @@ module Luis
   end
 
   def self.query(utterance)
+    return nil if utterance.empty?
     endpoint = configuration.endpoint_url
     raise "#{self} requires an endpoint url" if endpoint == nil
 
